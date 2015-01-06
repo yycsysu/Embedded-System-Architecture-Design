@@ -1,0 +1,10 @@
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/pcpu.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/pcpu.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/pcpu.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/pcpu.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/pcpu.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/pcpu.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/pcpu.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/pcpu.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/pcpu.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/pcpu.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/pcpu.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/pcpu.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/pcpu.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/pcpu.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/pcpu.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/pcpu.syr" 
+netgen -intstyle ise -insert_glbl true -w -dir netgen/synthesis -ofmt verilog -sim pcpu.ngc pcpu_synthesis.v 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/pcpu.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/pcpu.syr" 

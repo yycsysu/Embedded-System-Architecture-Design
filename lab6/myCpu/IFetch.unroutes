@@ -1,0 +1,18 @@
+Release 12.3 - par M.70d (lin64)
+Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+
+Sat Dec  6 13:39:27 2014
+
+All signals are completely routed.
+
+WARNING:ParHelpers:361 - There are 6 loadless signals in this design. This design will cause Bitgen to issue DRC
+   warnings.
+
+   Mram_gr11_RAMD_D1_O
+   Mram_gr12_RAMD_D1_O
+   Mram_gr1_RAMD_D1_O
+   Mram_gr21_RAMD_D1_O
+   Mram_gr22_RAMD_D1_O
+   Mram_gr3_RAMD_D1_O
+
+

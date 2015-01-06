@@ -1,0 +1,10 @@
+Command line:
+   pcpuTest_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  60004
+
+Tue Jan  6 16:10:57 2015
+
+
+ Elaboration Time: 0.04 sec

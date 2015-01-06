@@ -1,0 +1,33 @@
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6slx16-csg324-3 IFetch.ngc IFetch.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -global_opt off -mt off -ir off -pr off -lc off -power off -o IFetch_map.ncd IFetch.ngd IFetch.pcf 
+netgen -intstyle ise -insert_glbl true -w -dir netgen/synthesis -ofmt verilog -sim IFetch.ngc IFetch_synthesis.v 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+netgen -intstyle ise -insert_glbl true -w -dir netgen/synthesis -ofmt verilog -sim IFetch.ngc IFetch_synthesis.v 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6slx16-csg324-3 IFetch.ngc IFetch.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -global_opt off -mt off -ir off -pr off -lc off -power off -o IFetch_map.ncd IFetch.ngd IFetch.pcf 
+par -w -intstyle ise -ol high -mt off IFetch_map.ncd IFetch.ncd IFetch.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml IFetch.twx IFetch.ncd -o IFetch.twr IFetch.pcf 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/IFetch.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/IFetch.syr" 
