@@ -1,10 +1,6 @@
-set -tmpdir "xst/projnav.tmp"
-set -xsthdpdir "xst"
-run
--ifn pcpu.prj
--ifmt mixed
--ofn pcpu
--ofmt NGC
+set -tmpdir "/home/wu/ise12.3/lab6/myCpu/xst/projnav.tmp"
+set -xsthdpdir "/home/wu/ise12.3/lab6/myCpu/xst"
+run -compileonly yes
 -p xc6slx16-3-csg324
 -top pcpu
 -opt_mode Speed
@@ -51,3 +47,5 @@ run
 -iob Auto
 -equivalent_register_removal YES
 -slice_utilization_ratio_maxmargin 5
+-ifn pcpu.prj
+-ifmt mixed

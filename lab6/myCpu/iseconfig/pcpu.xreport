@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2015-01-06T16:10:14</DateModified>
+  <DateModified>2015-01-07T17:29:50</DateModified>
   <ModuleName>pcpu</ModuleName>
-  <SummaryTimeStamp>Unknown</SummaryTimeStamp>
+  <SummaryTimeStamp>2015-01-06T21:30:32</SummaryTimeStamp>
   <SavedFilePath>/home/wu/ise12.3/lab6/myCpu/iseconfig/pcpu.xreport</SavedFilePath>
   <ImplementationReportsDirectory>/home/wu/ise12.3/lab6/myCpu/</ImplementationReportsDirectory>
-  <DateInitialized>2014-12-08T21:23:38</DateInitialized>
+  <DateInitialized>2015-01-06T21:34:01</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
  <body>

@@ -1,0 +1,3 @@
+verilog work "pcpu.v"
+verilog work "InstructionMemory.v"
+verilog work "Controller.v"

@@ -95,7 +95,7 @@ parameter GR3   = 3'b011;
 		.y(y)
 	);
 	initial begin
-  /*
+
 		clock <= 0; enable <= 1; start <= 0;
 		dDataIn <= 0;
 		iDataIn <= 0;
@@ -106,57 +106,32 @@ parameter GR3   = 3'b011;
 		#10 enable <= 1; 
     #10 start <= 1; 
     #10 start <= 0;
-        iDataIn <= {LOAD, GR2, 1'b0, GR0, 4'b0000};
-    #10 iDataIn <= {LOAD, GR3, 1'b0, GR0, 4'b0001}; 
-		#10 iDataIn <= {NOP, 11'b000_0000_0000};
-		#10 iDataIn <= {NOP, 11'b000_0000_0000};
-        dDataIn <= 16'h0011;
-		#10 iDataIn <= {NOP, 11'b000_0000_0000};
-        dDataIn <= 16'hFFFF;
-		#10 iDataIn <= {AND, GR1, 1'b0, GR2, 1'b0, GR3};
-		#10 iDataIn <= {OR, GR1, 1'b0, GR2, 1'b0, GR3};
-		#10 iDataIn <= {XOR, GR1, 1'b0, GR2, 1'b0, GR3};
-		#10 iDataIn <= {ADDC, GR3, 1'b0, GR1, 1'b0, GR2};
-		#10 iDataIn <= {NOP, 11'b000_0000_0000};
-		#10 iDataIn <= {NOP, 11'b000_0000_0000};
-		#10 iDataIn <= {NOP, 11'b000_0000_0000};
-		#10 iDataIn <= {STORE, GR3, 1'b0, GR0, 4'b0010};
-		#10 iDataIn <= {HALT, 11'b000_0000_0000};
-    */
- /*
-		// Initialize Inputs
-    #10 reset <= 0;
-		#10 reset <= 1;
-		#10 enable <= 1; 
-    #10 start <= 1; 
-    #10 start <= 0;
         iDataIn <= {LOAD, GR1, 1'b0, GR0, 4'b0000};
-		#10 iDataIn <= {NOP, 11'b000_0000_0000};
-		#10 iDataIn <= {NOP, 11'b000_0000_0000};
-        dDataIn <= 16'h0000;
-    #10 iDataIn <= {ADDI, GR1, 8'hAB};
-		#10 iDataIn <= {NOP, 11'b000_0000_0000};
-		#10 iDataIn <= {NOP, 11'b000_0000_0000};
-		#10 iDataIn <= {NOP, 11'b000_0000_0000};
-    #10 iDataIn <= {LDIH, GR1, 8'hCD};
-		#10 iDataIn <= {NOP, 11'b000_0000_0000};
-		#10 iDataIn <= {NOP, 11'b000_0000_0000};
-		#10 iDataIn <= {NOP, 11'b000_0000_0000};
-		#10 iDataIn <= {STORE, GR1, 1'b0, GR0, 4'b0010};
+		#10 iDataIn <= {JUMP, GR1, 8'b10000000};
+		#10 iDataIn <= {JMPR, GR1, 8'b00010000};
+		#10 iDataIn <= {BZ, GR1, 8'b00100000};
+        dDataIn <= 16'h000A;
+		#10 iDataIn <= {BNZ, GR1, 8'b00110000};
+		#10 iDataIn <= {BN, GR1, 8'b01000000};
+		#10 iDataIn <= {BNN, GR1, 8'b01010000};
+		#10 iDataIn <= {BC, GR1, 8'b01100000};
+		#10 iDataIn <= {BNC, GR1, 8'b01110000};
 		#10 iDataIn <= {HALT, 11'b000_0000_0000};
-		// Wait 100 ns for global reset to finish
-*/
+
 
 	end
   always #5 clock <= ~clock;  
   
   initial begin
-    $display("pc:------idir------:regA :regB: regC :da:dd:  :w:regC1:gr1 :gr2:gr3 ");
+    $display("pc:-----------idir-----------:regA :regB :regC :da:dd :w:regC1:gr1  :gr2  :gr3  :cf:zf:nf");
+        //      00:0000000000000000:0000:0000:0000:zz:zzzz:z:0000:0000:0000:0000
     //$monitor("%b:%h:%h:%b",iDataIn, dAddr, dDataOut, dWE);
-    $monitor("%h:%b:%h:%h:%h:%h:%h:%b:%h:%h:%h:%h",
+    $monitor("%h:%b:%h:%h:%h:%h:%h:%b:%h:%h:%h:%h:%b:%b:%b",
       pcpuTest.uut.pc, pcpuTest.uut.idIr, pcpuTest.uut.regA, pcpuTest.uut.regB, pcpuTest.uut.regC,
       dAddr, dDataOut, dWE, 
-      pcpuTest.uut.regC1, pcpuTest.uut.gr[1], pcpuTest.uut.gr[2], pcpuTest.uut.gr[3]);
+      pcpuTest.uut.regC1, pcpuTest.uut.gr[1], pcpuTest.uut.gr[2], pcpuTest.uut.gr[3],
+      pcpuTest.uut.cf, pcpuTest.uut.zf, pcpuTest.uut.nf,
+      );//pcpuTest.uut.ALUo
   
   end
       

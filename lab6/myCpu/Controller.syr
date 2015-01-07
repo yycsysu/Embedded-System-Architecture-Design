@@ -1,0 +1,149 @@
+Release 12.3 - xst M.70d (lin64)
+Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> 
+Reading design: Controller.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "Controller.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "Controller"
+Output Format                      : NGC
+Target Device                      : xc6slx16-3-csg324
+
+---- Source Options
+Top Module Name                    : Controller
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file \"/home/wu/ise12.3/lab6/myCpu/pcpu.v\" into library work
+Parsing module <pcpu>.
+Analyzing Verilog file \"/home/wu/ise12.3/lab6/myCpu/InstructionMemory.v\" into library work
+Parsing module <InstructionMemory>.
+Analyzing Verilog file \"/home/wu/ise12.3/lab6/myCpu/Controller.v\" into library work
+Parsing module <Controller>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating module <Controller>.
+
+Elaborating module <InstructionMemory>.
+
+Elaborating module <pcpu>.
+WARNING:HDLCompiler:1127 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 212: Assignment to smdr1 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 272: Assignment to smdr1 ignored, since the identifier is never used
+ERROR:HDLCompiler:1401 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 165: Signal regA[15] in unit pcpu is connected to following multiple drivers:
+ERROR:HDLCompiler:1379 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 314: Driver 0: output signal regA[15] of instance Flip-flop
+ERROR:HDLCompiler:1379 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 291: Driver 1: output signal regA[15] of instance Flip-flop
+ERROR:HDLCompiler:1379 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 272: Driver 2: output signal regA[15] of instance Flip-flop
+ERROR:HDLCompiler:1379 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 165: Driver 3: output signal regA[15] of instance Flip-flop
+ERROR:HDLCompiler:1401 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 212: Signal zf in unit pcpu is connected to following multiple drivers:
+ERROR:HDLCompiler:1379 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 212: Driver 1: output signal zf of instance Latch
+ERROR:HDLCompiler:1401 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 272: Signal cf in unit pcpu is connected to following multiple drivers:
+Module pcpu remains a blackbox, due to errors in its contents
+WARNING:HDLCompiler:1499 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 21: Empty module <pcpu> remains a black box.
+WARNING:HDLCompiler:1127 - "/home/wu/ise12.3/lab6/myCpu/Controller.v" Line 33: Assignment to dWE ignored, since the identifier is never used
+--> 
+
+
+Total memory usage is 295776 kilobytes
+
+Number of errors   :    8 (   0 filtered)
+Number of warnings :    4 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

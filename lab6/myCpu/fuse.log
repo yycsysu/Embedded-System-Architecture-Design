@@ -8,14 +8,14 @@ Analyzing Verilog file \"/home/wu/ise12.3/lab6/myCpu/pcpuTest.v\" into library w
 Analyzing Verilog file \"/opt/Xilinx/12.3/ISE_DS/ISE//verilog/src/glbl.v\" into library work
 Starting static elaboration
 Completed static elaboration
-Fuse Memory Usage: 69864 KB
-Fuse CPU Usage: 160 ms
+Fuse Memory Usage: 69980 KB
+Fuse CPU Usage: 130 ms
 Compiling module pcpu
 Compiling module pcpuTest
 Compiling module glbl
 Time Resolution for simulation is 1ps.
 Compiled 3 Verilog Units
 Built simulation executable /home/wu/ise12.3/lab6/myCpu/pcpuTest_isim_beh.exe
-Fuse Memory Usage: 369444 KB
-Fuse CPU Usage: 220 ms
-GCC CPU Usage: 1440 ms
+Fuse Memory Usage: 374552 KB
+Fuse CPU Usage: 310 ms
+GCC CPU Usage: 3820 ms
