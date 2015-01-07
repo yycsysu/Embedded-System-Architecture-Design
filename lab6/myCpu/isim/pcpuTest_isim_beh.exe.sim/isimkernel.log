@@ -2,14 +2,14 @@ Command line:
    pcpuTest_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  52466
+     -socket  52567
 
-Wed Jan  7 19:06:20 2015
+Wed Jan  7 19:43:55 2015
 
 
  Elaboration Time: 0.03 sec
 
- Current Memory Usage: 156.791 Meg
+ Current Memory Usage: 156.799 Meg
 
  Total Signals          : 28
  Total Nets             : 100
@@ -20,9 +20,9 @@ Wed Jan  7 19:06:20 2015
  Total Traceable Variables  : 111
  Total Scalar Nets and Variables : 837
 
- Total Simulation Time: 0.04 sec
+ Total Simulation Time: 0.05 sec
 
- Current Memory Usage: 232.292 Meg
+ Current Memory Usage: 232.301 Meg
 
-Wed Jan  7 19:06:45 2015
+Wed Jan  7 19:44:01 2015
 

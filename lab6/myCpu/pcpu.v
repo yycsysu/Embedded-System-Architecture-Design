@@ -185,44 +185,54 @@ reg signed [15:0] regC1;
       {exIr, regA, regB, smdr} <= {{16{1'b0}}, {16{1'b0}}, {16{1'b0}}, {16{1'b0}}};
     else if (state == EXEC) begin
       exIr <= idIr;
+      if ((idIr[15:11] == BZ) || (idIr[15:11] == BNZ) || (idIr[15:11] == BN)
+        || (idIr[15:11] == BNN) || (idIr[15:11] == BC) || (idIr[15:11] == BNC)
+        || (idIr[15:11] == JMPR) || (idIr[15:11] == LDIH) || (idIr[15:11] == ADDI)
+        || (idIr[15:11] == SUBI)) begin
+        if (idIr[10:8] == exIr[10:8])
+          regA <= ALUo;
+        else if (idIr[10:8] == memIr[10:8] && memIr[15:11] == LOAD)
+          regA <= dDataIn;
+        else if (idIr[10:8] == memIr[10:8])
+          regA <= regC;
+        else if (idIr[10:8] == wbIr[10:8])
+            regA <= regC1;
+        else regA <= gr[(idIr[10:8])]; //operand1 in 10-8 bits , I type
+      end else begin
+        if (idIr[7:4] == exIr[10:8])
+          regA <= ALUo;
+        else if (idIr[7:4] == memIr[10:8] && memIr[15:11] == LOAD)
+            regA <= dDataIn;
+        else if (idIr[7:4] == memIr[10:8])
+            regA <= regC;
+        else if (idIr[7:4] == wbIr[10:8])
+            regA <= regC1;
+        else regA <= gr[idIr[6:4]]; //operand2 in 6-4 bits , RI/R type
+      end
       
-      if ((idIr[15:11] == BZ)
-      || (idIr[15:11] == BNZ)
-      || (idIr[15:11] == BN)
-      || (idIr[15:11] == BNN)
-      || (idIr[15:11] == BC)
-      || (idIr[15:11] == BNC)
-      || (idIr[15:11] == JMPR)
-      || (idIr[15:11] == LDIH)
-      || (idIr[15:11] == ADDI)
-      || (idIr[15:11] == SUBI))
-        regA <= gr[(idIr[10:8])]; //operand1 in 10-8 bits , I type
-      else regA <= gr[idIr[6:4]]; //operand2 in 6-4 bits , RI/R type
-      
-      if ((idIr[15:11] == LOAD)
-      || (idIr[15:11] == SLL)
-      || (idIr[15:11] == SRL)
-      || (idIr[15:11] == SLA)
-      || (idIr[15:11] == SRA)) begin //RI type;
+      if ((idIr[15:11] == LOAD) || (idIr[15:11] == SLL) || (idIr[15:11] == SRL)
+        || (idIr[15:11] == SLA) || (idIr[15:11] == SRA)) begin //RI type;
         regB <= {12'b0000_0000_0000, idIr[3:0]}; //operand3 in 3-0 bits
       end else if (idIr[15:11] == STORE) begin //RI type with smdr
         regB <= {12'b0000_0000_0000, idIr[3:0]};
         smdr <= gr[idIr[10:8]];
-      end else if ((idIr[15:11] == BZ)
-               || (idIr[15:11] == BNZ)
-               || (idIr[15:11] == BN)
-               || (idIr[15:11] == BNN)
-               || (idIr[15:11] == BC)
-               || (idIr[15:11] == BNC)
-               || (idIr[15:11] == JUMP)
-               || (idIr[15:11] == JMPR)
-               || (idIr[15:11] == ADDI)
+      end else if ((idIr[15:11] == BZ) || (idIr[15:11] == BNZ) || (idIr[15:11] == BN)
+               || (idIr[15:11] == BNN) || (idIr[15:11] == BC) || (idIr[15:11] == BNC)
+               || (idIr[15:11] == JUMP) || (idIr[15:11] == JMPR) || (idIr[15:11] == ADDI)
                || (idIr[15:11] == SUBI)) begin // I type
         regB <= {8'b0000_0000, idIr[7:0]}; //operand2, 3: val2 + val3, iType;
       end else if (idIr[15:11] == LDIH) begin // Itype
         regB <= {idIr[7:0], 8'b0000_0000};
       end else begin
-        regB <= gr[idIr[2:0]]; //operand3: r3 , R type
+        if (idIr[3:0] == exIr[10:8])
+            regB <= ALUo;
+        else if (idIr[3:0] == memIr[10:8] && (memIr[15:11] == LOAD))
+            regB <= dDataIn;
+        else if (idIr[3:0] == memIr[10:8])
+            regB <= regC;
+        else if (idIr[3:0] == wbIr[10:8])
+            regB <= regC1;
+        else regB <= gr[idIr[2:0]]; //operand3: r3 , R type
       end
     end else;
   end
@@ -231,7 +241,9 @@ reg signed [15:0] regC1;
   reg exCf, exNf, exZf;
     //ALU Start
   always @ (*) begin
-      if ((exIr[15:11] == ADD)
+    if (!reset) begin
+      {cf, zf, nf} <= {1'b0, 1'b0, 1'b0};
+    end else if ((exIr[15:11] == ADD)
       || (exIr[15:11] == ADDI)
       || (exIr[15:11] == JMPR)
       || (exIr[15:11] == LDIH)
@@ -241,15 +253,15 @@ reg signed [15:0] regC1;
       || (exIr[15:11] == BNN)
       || (exIr[15:11] == BC)
       || (exIr[15:11] == BNC)) begin
-        {exCf, ALUo} <= regA + regB + 1'b0;
+        {cf, ALUo} <= regA + regB + 1'b0;
       end else if (exIr[15:11] == ADDC) begin
-        {exCf, ALUo} <= regA + regB + cf;
+        {cf, ALUo} <= regA + regB + cf;
       end else if (exIr[15:11] == SUBC) begin
-        {exCf, ALUo} <= regA - regB - cf;
+        {cf, ALUo} <= regA - regB - cf;
       end else if ((exIr[15:11] == CMP)
                || (exIr[15:11] == SUB)
                || (exIr[15:11] == SUBI)) begin
-        {exCf, ALUo} <= regA - regB - 1'b0;
+        {cf, ALUo} <= regA - regB - 1'b0;
       end else if (exIr[15:11] == AND) begin
         ALUo <= regA & regB;
       end else if (exIr[15:11] == OR) begin
@@ -257,11 +269,11 @@ reg signed [15:0] regC1;
       end else if (exIr[15:11] == XOR) begin
         ALUo <= regA ^ regB;
       end else if (exIr[15:11] == SLL) begin
-        {exCf, ALUo} <= regA << regB;
+        {cf, ALUo} <= regA << regB;
       end else if (exIr[15:11] == SRL) begin
         ALUo <= regA >> regB;
       end else if (exIr[15:11] == SLA) begin
-        {exCf, ALUo} <= regA <<< regB;
+        {cf, ALUo} <= regA <<< regB;
       end else if (exIr[15:11] == SRA) begin
         ALUo <= regA >>> regB;
       end else begin
@@ -274,13 +286,13 @@ reg signed [15:0] regC1;
       || (exIr[15:11] == LDIH)
       || (exIr[15:11] == CMP)) begin
         if (ALUo == {16{1'b0}})
-          exZf <= 1'b1;
+          zf <= 1'b1;
         else
-          exZf <= 1'b0;
+          zf <= 1'b0;
         if (ALUo[15] == 1'b1)
-          exNf <= 1'b1;
+          nf <= 1'b1;
         else
-          exNf <= 1'b0;
+          nf <= 1'b0;
       end
       if (exIr[15:11] == STORE)
         {dw, smdr1} <= {1'b1, smdr};
@@ -294,53 +306,11 @@ reg signed [15:0] regC1;
     if (!reset) begin
       {memIr, regC, smdr1}
       <= {{16{1'b0}}, {16{1'b0}}, {16{1'b0}}};
-      {cf, zf, nf} <= {1'b0, 1'b0, 1'b0};
-      {exCf, exZf, exNf} <= {1'b0, 1'b0, 1'b0};
     end else if (state == EXEC) begin
       memIr <= exIr;
       regC <= ALUo;
-      {cf, nf, zf} <= {exCf, exNf, exZf};
-        if (exIr[15:11] != JUMP
-                 && exIr[15:11] != JMPR
-                 && exIr[15:11] != BZ
-                 && exIr[15:11] != BNZ
-                 && exIr[15:11] != BN
-                 && exIr[15:11] != BNN
-                 && exIr[15:11] != BC
-                 && exIr[15:11] != BNC) 
-        if (idIr[15:11] == ADD
-           || idIr[15:11] == ADDC
-           || idIr[15:11] == SUB
-           || idIr[15:11] == SUBC
-           || idIr[15:11] == CMP
-           || idIr[15:11] == AND
-           || idIr[15:11] == OR
-           || idIr[15:11] == XOR) begin
-          if (idIr[3:0] == exIr[10:8])
-            regB <= ALUo;
-          if (idIr[7:4] == exIr[10:8])
-            regA <= ALUo;
-        end else if ((idIr[15:11] == LOAD
-                    || idIr[15:11] == STORE
-                    || idIr[15:11] == SLL
-                    || idIr[15:11] == SRL
-                    || idIr[15:11] == SLA
-                    || idIr[15:11] == SRA)
-                    && (idIr[7:4] == exIr[10:8])) begin
-            regA <= ALUo;
-        end else if ((idIr[15:11] == ADDI
-                    || idIr[15:11] == LDIH
-                    || idIr[15:11] == SUBI
-                    || idIr[15:11] == BZ
-                    || idIr[15:11] == BNZ
-                    || idIr[15:11] == BN
-                    || idIr[15:11] == BNN
-                    || idIr[15:11] == BC
-                    || idIr[15:11] == BNC
-                    || idIr[15:11] == JMPR)
-                    && (idIr[10:8] == exIr[10:8])) begin
-            regA <= ALUo;
-        end
+      //{cf, nf, zf} <= {exCf, exNf, exZf};
+       
     end
   end
 //exec - End
@@ -353,105 +323,8 @@ reg signed [15:0] regC1;
       wbIr <= memIr;
       if (memIr[15:11] == LOAD) begin
         regC1 <= dDataIn;
-        if (idIr[15:11] == ADD
-           || idIr[15:11] == ADDC
-           || idIr[15:11] == SUB
-           || idIr[15:11] == SUBC
-           || idIr[15:11] == CMP
-           || idIr[15:11] == AND
-           || idIr[15:11] == OR
-           || idIr[15:11] == XOR) begin
-          if (idIr[3:0] == memIr[10:8]
-               && (idIr[3:0] != exIr[10:8]))
-            regB <= dDataIn;
-          if (idIr[7:4] == memIr[10:8]
-               && (idIr[7:4] != exIr[10:8]))
-            regA <= dDataIn;
-        end else if ((idIr[15:11] == LOAD
-                    || idIr[15:11] == STORE
-                    || idIr[15:11] == SLL
-                    || idIr[15:11] == SRL
-                    || idIr[15:11] == SLA
-                    || idIr[15:11] == SRA)
-                    && (idIr[7:4] == memIr[10:8])
-                    && (idIr[7:4] != exIr[10:8])) begin
-            regA <= dDataIn;
-        end else if ((idIr[15:11] == ADDI
-                    || idIr[15:11] == LDIH
-                    || idIr[15:11] == SUBI
-                    || idIr[15:11] == BZ
-                    || idIr[15:11] == BNZ
-                    || idIr[15:11] == BN
-                    || idIr[15:11] == BNN
-                    || idIr[15:11] == BC
-                    || idIr[15:11] == BNC
-                    || idIr[15:11] == JMPR)
-                    && (idIr[10:8] == memIr[10:8])
-                    && (idIr[10:8] != exIr[10:8]
-                      || exIr[15:11] == BZ
-                      || exIr[15:11] == BNZ
-                      || exIr[15:11] == BN
-                      || exIr[15:11] == BNN
-                      || exIr[15:11] == BC
-                      || exIr[15:11] == BNC
-                      || exIr[15:11] == JMPR
-                      || exIr[15:11] == JUMP)) begin
-            regA <= dDataIn;
-        end
-      end else if (memIr[15:11] != JUMP
-                 && memIr[15:11] != JMPR
-                 && memIr[15:11] != BZ
-                 && memIr[15:11] != BNZ
-                 && memIr[15:11] != BN
-                 && memIr[15:11] != BNN
-                 && memIr[15:11] != BC
-                 && memIr[15:11] != BNC) begin
+      end else begin
         regC1 <= regC;
-        if (idIr[15:11] == ADD
-           || idIr[15:11] == ADDC
-           || idIr[15:11] == SUB
-           || idIr[15:11] == SUBC
-           || idIr[15:11] == CMP
-           || idIr[15:11] == AND
-           || idIr[15:11] == OR
-           || idIr[15:11] == XOR) begin
-          if (idIr[3:0] == memIr[10:8]
-               && (idIr[3:0] != exIr[10:8]))
-            regB <= regC;
-          if (idIr[7:4] == memIr[10:8]
-               && (idIr[7:4] != exIr[10:8]))
-            regA <= regC;
-        end else if ((idIr[15:11] == LOAD
-                    || idIr[15:11] == STORE
-                    || idIr[15:11] == SLL
-                    || idIr[15:11] == SRL
-                    || idIr[15:11] == SLA
-                    || idIr[15:11] == SRA)
-                    && (idIr[7:4] == memIr[10:8])
-                    && (idIr[7:4] != exIr[10:8])) begin
-            regA <= regC;
-        end else if ((idIr[15:11] == ADDI
-                    || idIr[15:11] == LDIH
-                    || idIr[15:11] == SUBI
-                    || idIr[15:11] == BZ
-                    || idIr[15:11] == BNZ
-                    || idIr[15:11] == BN
-                    || idIr[15:11] == BNN
-                    || idIr[15:11] == BC
-                    || idIr[15:11] == BNC
-                    || idIr[15:11] == JMPR)
-                    && (idIr[10:8] == memIr[10:8])
-                    && (idIr[10:8] != exIr[10:8]
-                      || exIr[15:11] == BZ
-                      || exIr[15:11] == BNZ
-                      || exIr[15:11] == BN
-                      || exIr[15:11] == BNN
-                      || exIr[15:11] == BC
-                      || exIr[15:11] == BNC
-                      || exIr[15:11] == JMPR
-                      || exIr[15:11] == JUMP)) begin
-            regA <= regC;
-        end
       end
     end
   end
@@ -481,63 +354,6 @@ reg signed [15:0] regC1;
       || (wbIr[15:11] == SRL)
       || (wbIr[15:11] == SRA)) begin
         gr[wbIr[10:8]] <= regC1;
-        if (idIr[15:11] == ADD
-           || idIr[15:11] == ADDC
-           || idIr[15:11] == SUB
-           || idIr[15:11] == SUBC
-           || idIr[15:11] == CMP
-           || idIr[15:11] == AND
-           || idIr[15:11] == OR
-           || idIr[15:11] == XOR) begin
-          if (idIr[3:0] == wbIr[10:8]
-               && (idIr[3:0] != memIr[10:8])
-               && (idIr[3:0] != exIr[10:8]))
-            regB <= regC1;
-          if (idIr[7:4] == wbIr[10:8]
-               && (idIr[7:4] != memIr[10:8])
-               && (idIr[7:4] != exIr[10:8]))
-            regA <= regC1;
-        end else if ((idIr[15:11] == LOAD
-                    || idIr[15:11] == STORE
-                    || idIr[15:11] == SLL
-                    || idIr[15:11] == SRL
-                    || idIr[15:11] == SLA
-                    || idIr[15:11] == SRA)
-                    && (idIr[7:4] == wbIr[10:8])
-                    && (idIr[7:4] != memIr[10:8])
-                    && (idIr[7:4] != exIr[10:8])) begin
-            regA <= regC1;
-        end else if ((idIr[15:11] == ADDI
-                    || idIr[15:11] == LDIH
-                    || idIr[15:11] == SUBI
-                    || idIr[15:11] == BZ
-                    || idIr[15:11] == BNZ
-                    || idIr[15:11] == BN
-                    || idIr[15:11] == BNN
-                    || idIr[15:11] == BC
-                    || idIr[15:11] == BNC
-                    || idIr[15:11] == JMPR)
-                    && (idIr[10:8] == wbIr[10:8])
-                    && (idIr[10:8] != memIr[10:8]
-                      || memIr[15:11] == BZ
-                      || memIr[15:11] == BNZ
-                      || memIr[15:11] == BN
-                      || memIr[15:11] == BNN
-                      || memIr[15:11] == BC
-                      || memIr[15:11] == BNC
-                      || memIr[15:11] == JMPR
-                      || memIr[15:11] == JUMP)
-                    && (idIr[10:8] != exIr[10:8]
-                      || exIr[15:11] == BZ
-                      || exIr[15:11] == BNZ
-                      || exIr[15:11] == BN
-                      || exIr[15:11] == BNN
-                      || exIr[15:11] == BC
-                      || exIr[15:11] == BNC
-                      || exIr[15:11] == JMPR
-                      || exIr[15:11] == JUMP)) begin
-            regA <= regC1;
-        end
       end
     end
   end

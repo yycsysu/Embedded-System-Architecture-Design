@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> 
 Reading design: pcpu.prj
@@ -117,8 +117,8 @@ Parsing module <pcpu>.
 =========================================================================
 
 Elaborating module <pcpu>.
-WARNING:HDLCompiler:1127 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 207: Assignment to smdr1 ignored, since the identifier is never used
-WARNING:HDLCompiler:1499 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 21: Empty module <pcpu> remains a black box.
+WARNING:HDLCompiler:1127 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 243: Assignment to smdr1 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 305: Assignment to smdr1 ignored, since the identifier is never used
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -130,17 +130,21 @@ Synthesizing Unit <pcpu>.
         HALT = 5'b00001
         LOAD = 5'b00010
         STORE = 5'b00011
-        LDIH = 5'b10000
         ADD = 5'b01000
         ADDI = 5'b01001
+        LDIH = 5'b10000
         ADDC = 5'b10001
         SUB = 5'b10010
+        SUBI = 5'b10011
+        SUBC = 5'b10100
         CMP = 5'b01100
         AND = 5'b01101
         OR = 5'b01110
         XOR = 5'b01111
         SLL = 5'b00100
         SLA = 5'b00101
+        SRL = 5'b00110
+        SRA = 5'b00111
         JUMP = 5'b11000
         JMPR = 5'b11001
         BZ = 5'b11010
@@ -155,36 +159,316 @@ Synthesizing Unit <pcpu>.
         GR3 = 3'b011
         IDLE = 1'b0
         EXEC = 1'b1
-WARNING:Xst:647 - Input <dDataIn<15:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <iDataIn<15:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <ySelect<3:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <clock> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <enable> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <reset> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <start> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 8-bit register for signal <iAddr>.
+    Found 16-bit register for signal <idIr>.
+    Found 16-bit register for signal <regB>.
+    Found 16-bit register for signal <regA>.
+    Found 16-bit register for signal <exIr>.
+    Found 16-bit register for signal <regC>.
+    Found 16-bit register for signal <memIr>.
+    Found 16-bit register for signal <regC1>.
+    Found 16-bit register for signal <wbIr>.
+    Found 1-bit register for signal <gr<3><15>>.
+    Found 1-bit register for signal <gr<3><14>>.
+    Found 1-bit register for signal <gr<3><13>>.
+    Found 1-bit register for signal <gr<3><12>>.
+    Found 1-bit register for signal <gr<3><11>>.
+    Found 1-bit register for signal <gr<3><10>>.
+    Found 1-bit register for signal <gr<3><9>>.
+    Found 1-bit register for signal <gr<3><8>>.
+    Found 1-bit register for signal <gr<3><7>>.
+    Found 1-bit register for signal <gr<3><6>>.
+    Found 1-bit register for signal <gr<3><5>>.
+    Found 1-bit register for signal <gr<3><4>>.
+    Found 1-bit register for signal <gr<3><3>>.
+    Found 1-bit register for signal <gr<3><2>>.
+    Found 1-bit register for signal <gr<3><1>>.
+    Found 1-bit register for signal <gr<3><0>>.
+    Found 1-bit register for signal <gr<2><15>>.
+    Found 1-bit register for signal <gr<2><14>>.
+    Found 1-bit register for signal <gr<2><13>>.
+    Found 1-bit register for signal <gr<2><12>>.
+    Found 1-bit register for signal <gr<2><11>>.
+    Found 1-bit register for signal <gr<2><10>>.
+    Found 1-bit register for signal <gr<2><9>>.
+    Found 1-bit register for signal <gr<2><8>>.
+    Found 1-bit register for signal <gr<2><7>>.
+    Found 1-bit register for signal <gr<2><6>>.
+    Found 1-bit register for signal <gr<2><5>>.
+    Found 1-bit register for signal <gr<2><4>>.
+    Found 1-bit register for signal <gr<2><3>>.
+    Found 1-bit register for signal <gr<2><2>>.
+    Found 1-bit register for signal <gr<2><1>>.
+    Found 1-bit register for signal <gr<2><0>>.
+    Found 1-bit register for signal <gr<1><15>>.
+    Found 1-bit register for signal <gr<1><14>>.
+    Found 1-bit register for signal <gr<1><13>>.
+    Found 1-bit register for signal <gr<1><12>>.
+    Found 1-bit register for signal <gr<1><11>>.
+    Found 1-bit register for signal <gr<1><10>>.
+    Found 1-bit register for signal <gr<1><9>>.
+    Found 1-bit register for signal <gr<1><8>>.
+    Found 1-bit register for signal <gr<1><7>>.
+    Found 1-bit register for signal <gr<1><6>>.
+    Found 1-bit register for signal <gr<1><5>>.
+    Found 1-bit register for signal <gr<1><4>>.
+    Found 1-bit register for signal <gr<1><3>>.
+    Found 1-bit register for signal <gr<1><2>>.
+    Found 1-bit register for signal <gr<1><1>>.
+    Found 1-bit register for signal <gr<1><0>>.
+    Found 1-bit register for signal <gr<0><15>>.
+    Found 1-bit register for signal <gr<0><14>>.
+    Found 1-bit register for signal <gr<0><13>>.
+    Found 1-bit register for signal <gr<0><12>>.
+    Found 1-bit register for signal <gr<0><11>>.
+    Found 1-bit register for signal <gr<0><10>>.
+    Found 1-bit register for signal <gr<0><9>>.
+    Found 1-bit register for signal <gr<0><8>>.
+    Found 1-bit register for signal <gr<0><7>>.
+    Found 1-bit register for signal <gr<0><6>>.
+    Found 1-bit register for signal <gr<0><5>>.
+    Found 1-bit register for signal <gr<0><4>>.
+    Found 1-bit register for signal <gr<0><3>>.
+    Found 1-bit register for signal <gr<0><2>>.
+    Found 1-bit register for signal <gr<0><1>>.
+    Found 1-bit register for signal <gr<0><0>>.
+    Found 1-bit register for signal <state>.
+    Found 1-bit register for signal <gr<7><15>>.
+    Found 1-bit register for signal <gr<7><14>>.
+    Found 1-bit register for signal <gr<7><13>>.
+    Found 1-bit register for signal <gr<7><12>>.
+    Found 1-bit register for signal <gr<7><11>>.
+    Found 1-bit register for signal <gr<7><10>>.
+    Found 1-bit register for signal <gr<7><9>>.
+    Found 1-bit register for signal <gr<7><8>>.
+    Found 1-bit register for signal <gr<7><7>>.
+    Found 1-bit register for signal <gr<7><6>>.
+    Found 1-bit register for signal <gr<7><5>>.
+    Found 1-bit register for signal <gr<7><4>>.
+    Found 1-bit register for signal <gr<7><3>>.
+    Found 1-bit register for signal <gr<7><2>>.
+    Found 1-bit register for signal <gr<7><1>>.
+    Found 1-bit register for signal <gr<7><0>>.
+    Found 1-bit register for signal <gr<6><15>>.
+    Found 1-bit register for signal <gr<6><14>>.
+    Found 1-bit register for signal <gr<6><13>>.
+    Found 1-bit register for signal <gr<6><12>>.
+    Found 1-bit register for signal <gr<6><11>>.
+    Found 1-bit register for signal <gr<6><10>>.
+    Found 1-bit register for signal <gr<6><9>>.
+    Found 1-bit register for signal <gr<6><8>>.
+    Found 1-bit register for signal <gr<6><7>>.
+    Found 1-bit register for signal <gr<6><6>>.
+    Found 1-bit register for signal <gr<6><5>>.
+    Found 1-bit register for signal <gr<6><4>>.
+    Found 1-bit register for signal <gr<6><3>>.
+    Found 1-bit register for signal <gr<6><2>>.
+    Found 1-bit register for signal <gr<6><1>>.
+    Found 1-bit register for signal <gr<6><0>>.
+    Found 1-bit register for signal <gr<5><15>>.
+    Found 1-bit register for signal <gr<5><14>>.
+    Found 1-bit register for signal <gr<5><13>>.
+    Found 1-bit register for signal <gr<5><12>>.
+    Found 1-bit register for signal <gr<5><11>>.
+    Found 1-bit register for signal <gr<5><10>>.
+    Found 1-bit register for signal <gr<5><9>>.
+    Found 1-bit register for signal <gr<5><8>>.
+    Found 1-bit register for signal <gr<5><7>>.
+    Found 1-bit register for signal <gr<5><6>>.
+    Found 1-bit register for signal <gr<5><5>>.
+    Found 1-bit register for signal <gr<5><4>>.
+    Found 1-bit register for signal <gr<5><3>>.
+    Found 1-bit register for signal <gr<5><2>>.
+    Found 1-bit register for signal <gr<5><1>>.
+    Found 1-bit register for signal <gr<5><0>>.
+    Found 1-bit register for signal <gr<4><15>>.
+    Found 1-bit register for signal <gr<4><14>>.
+    Found 1-bit register for signal <gr<4><13>>.
+    Found 1-bit register for signal <gr<4><12>>.
+    Found 1-bit register for signal <gr<4><11>>.
+    Found 1-bit register for signal <gr<4><10>>.
+    Found 1-bit register for signal <gr<4><9>>.
+    Found 1-bit register for signal <gr<4><8>>.
+    Found 1-bit register for signal <gr<4><7>>.
+    Found 1-bit register for signal <gr<4><6>>.
+    Found 1-bit register for signal <gr<4><5>>.
+    Found 1-bit register for signal <gr<4><4>>.
+    Found 1-bit register for signal <gr<4><3>>.
+    Found 1-bit register for signal <gr<4><2>>.
+    Found 1-bit register for signal <gr<4><1>>.
+    Found 1-bit register for signal <gr<4><0>>.
+    Found 17-bit subtractor for signal <GND_1_o_GND_1_o_sub_153_OUT> created at line 260.
+    Found 17-bit subtractor for signal <GND_1_o_GND_1_o_sub_158_OUT> created at line 264.
+    Found 8-bit adder for signal <pc[7]_GND_1_o_add_50_OUT> created at line 176.
+    Found 17-bit adder for signal <n0674> created at line 258.
+    Found 17-bit adder for signal <BUS_0003_GND_1_o_add_149_OUT> created at line 258.
+    Found 16-bit shifter logical right for signal <regA[15]_regB[15]_shift_right_167_OUT> created at line 274
+    Found 17-bit shifter logical left for signal <regA[15]_regB[15]_shift_left_169_OUT> created at line 276
+    Found 16-bit shifter arithmetic right for signal <regA[15]_regB[15]_shift_right_171_OUT> created at line 278
+    Found 16-bit 8-to-1 multiplexer for signal <idIr[10]_gr[7][15]_wide_mux_78_OUT> created at line 200.
+    Found 16-bit 8-to-1 multiplexer for signal <idIr[6]_gr[7][15]_wide_mux_88_OUT> created at line 210.
+    Found 16-bit 8-to-1 multiplexer for signal <idIr[2]_gr[7][15]_wide_mux_117_OUT> created at line 235.
+WARNING:Xst:737 - Found 1-bit latch for signal <nf>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <zf>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <cf>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<15>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<14>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<13>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<12>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<11>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<10>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<9>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<8>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<7>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<6>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<5>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<4>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<3>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 3-bit comparator equal for signal <iDataIn[2]_idIr[10]_equal_16_o> created at line 135
+    Found 3-bit comparator equal for signal <iDataIn[6]_idIr[10]_equal_17_o> created at line 136
+    Found 4-bit comparator equal for signal <iDataIn[7]_GND_1_o_equal_24_o> created at line 144
+    Found 3-bit comparator equal for signal <iDataIn[10]_idIr[10]_equal_36_o> created at line 157
+    Found 3-bit comparator equal for signal <idIr[10]_exIr[10]_equal_74_o> created at line 192
+    Found 3-bit comparator equal for signal <idIr[10]_memIr[10]_equal_77_o> created at line 196
+    Found 3-bit comparator equal for signal <idIr[10]_wbIr[10]_equal_78_o> created at line 198
+    Found 4-bit comparator equal for signal <idIr[7]_GND_1_o_equal_84_o> created at line 202
+    Found 4-bit comparator equal for signal <idIr[7]_GND_1_o_equal_87_o> created at line 206
+    Found 4-bit comparator equal for signal <idIr[7]_GND_1_o_equal_88_o> created at line 208
+    Found 4-bit comparator equal for signal <idIr[3]_GND_1_o_equal_113_o> created at line 227
+    Found 4-bit comparator equal for signal <idIr[3]_GND_1_o_equal_116_o> created at line 231
+    Found 4-bit comparator equal for signal <idIr[3]_GND_1_o_equal_117_o> created at line 233
     Summary:
-	no macro.
+	inferred   5 Adder/Subtractor(s).
+	inferred 265 D-type flip-flop(s).
+	inferred  19 Latch(s).
+	inferred  13 Comparator(s).
+	inferred 139 Multiplexer(s).
+	inferred   3 Combinational logic shifter(s).
 Unit <pcpu> synthesized.
-RTL-Simplification CPUSTAT: 0.00 
-RTL-BasicInf CPUSTAT: 0.00 
+RTL-Simplification CPUSTAT: 1.03 
+RTL-BasicInf CPUSTAT: 1.08 
 RTL-BasicOpt CPUSTAT: 0.00 
-RTL-Remain-Bus CPUSTAT: 0.00 
+RTL-Remain-Bus CPUSTAT: 0.01 
 
 =========================================================================
 HDL Synthesis Report
 
-Found no macro
+Macro Statistics
+# Adders/Subtractors                                   : 5
+ 17-bit adder                                          : 2
+ 17-bit subtractor                                     : 2
+ 8-bit adder                                           : 1
+# Registers                                            : 78
+ 1-bit register                                        : 65
+ 16-bit register                                       : 12
+ 8-bit register                                        : 1
+# Latches                                              : 19
+ 1-bit latch                                           : 19
+# Comparators                                          : 13
+ 3-bit comparator equal                                : 6
+ 4-bit comparator equal                                : 7
+# Multiplexers                                         : 139
+ 1-bit 2-to-1 multiplexer                              : 103
+ 16-bit 2-to-1 multiplexer                             : 31
+ 16-bit 8-to-1 multiplexer                             : 3
+ 17-bit 2-to-1 multiplexer                             : 1
+ 8-bit 2-to-1 multiplexer                              : 1
+# Logic shifters                                       : 3
+ 16-bit shifter arithmetic right                       : 1
+ 16-bit shifter logical right                          : 1
+ 17-bit shifter logical left                           : 1
+# Xors                                                 : 1
+ 16-bit xor2                                           : 1
+
 =========================================================================
 
 =========================================================================
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
+WARNING:Xst:2677 - Node <exIr_0> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <exIr_1> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <exIr_2> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <exIr_3> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <exIr_4> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <exIr_5> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <exIr_6> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <exIr_7> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <memIr_0> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <memIr_1> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <memIr_2> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <memIr_3> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <memIr_4> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <memIr_5> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <memIr_6> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <memIr_7> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <wbIr_0> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <wbIr_1> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <wbIr_2> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <wbIr_3> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <wbIr_4> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <wbIr_5> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <wbIr_6> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <wbIr_7> of sequential type is unconnected in block <pcpu>.
+
+Synthesizing (advanced) Unit <pcpu>.
+The following registers are absorbed into counter <pc>: 1 register on signal <pc>.
+Unit <pcpu> synthesized (advanced).
+WARNING:Xst:2677 - Node <exIr_0> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <exIr_1> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <exIr_2> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <exIr_3> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <exIr_4> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <exIr_5> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <exIr_6> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <exIr_7> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <memIr_0> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <memIr_1> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <memIr_2> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <memIr_3> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <memIr_4> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <memIr_5> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <memIr_6> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <memIr_7> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <wbIr_0> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <wbIr_1> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <wbIr_2> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <wbIr_3> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <wbIr_4> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <wbIr_5> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <wbIr_6> of sequential type is unconnected in block <pcpu>.
+WARNING:Xst:2677 - Node <wbIr_7> of sequential type is unconnected in block <pcpu>.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
-Found no macro
+Macro Statistics
+# Adders/Subtractors                                   : 4
+ 17-bit adder                                          : 2
+ 17-bit subtractor                                     : 2
+# Counters                                             : 1
+ 8-bit up counter                                      : 1
+# Registers                                            : 233
+ Flip-Flops                                            : 233
+# Comparators                                          : 13
+ 3-bit comparator equal                                : 6
+ 4-bit comparator equal                                : 7
+# Multiplexers                                         : 137
+ 1-bit 2-to-1 multiplexer                              : 102
+ 16-bit 2-to-1 multiplexer                             : 31
+ 16-bit 8-to-1 multiplexer                             : 3
+ 17-bit 2-to-1 multiplexer                             : 1
+# Logic shifters                                       : 3
+ 16-bit shifter arithmetic right                       : 1
+ 16-bit shifter logical right                          : 1
+ 17-bit shifter logical left                           : 1
+# Xors                                                 : 1
+ 16-bit xor2                                           : 1
+
 =========================================================================
 
 =========================================================================
@@ -195,14 +479,22 @@ Optimizing unit <pcpu> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block pcpu, actual ratio is 0.
+Found area constraint ratio of 100 (+ 5) on block pcpu, actual ratio is 7.
+FlipFlop idIr_0 has been replicated 2 time(s)
+FlipFlop idIr_10 has been replicated 2 time(s)
+FlipFlop idIr_4 has been replicated 1 time(s)
+FlipFlop idIr_8 has been replicated 2 time(s)
+FlipFlop idIr_9 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
 =========================================================================
 Final Register Report
 
-Found no macro
+Macro Statistics
+# Registers                                            : 249
+ Flip-Flops                                            : 249
+
 =========================================================================
 
 =========================================================================
@@ -224,6 +516,31 @@ Top Level Output File Name         : pcpu.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
+# BELS                             : 772
+#      GND                         : 1
+#      INV                         : 17
+#      LUT1                        : 16
+#      LUT2                        : 55
+#      LUT3                        : 42
+#      LUT4                        : 32
+#      LUT5                        : 95
+#      LUT6                        : 322
+#      MUXCY                       : 71
+#      MUXF7                       : 45
+#      VCC                         : 1
+#      XORCY                       : 75
+# FlipFlops/Latches                : 268
+#      FDCE                        : 184
+#      FDE                         : 64
+#      FDR                         : 1
+#      LD                          : 18
+#      LDC                         : 1
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 43
+#      IBUF                        : 35
+#      OBUF                        : 8
 
 Device utilization summary:
 ---------------------------
@@ -232,19 +549,23 @@ Selected Device : 6slx16csg324-3
 
 
 Slice Logic Utilization: 
+ Number of Slice Registers:             268  out of  18224     1%  
+ Number of Slice LUTs:                  579  out of   9112     6%  
+    Number used as Logic:               579  out of   9112     6%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:      0
-   Number with an unused Flip Flop:       0  out of      0         
-   Number with an unused LUT:             0  out of      0         
-   Number of fully used LUT-FF pairs:     0  out of      0         
-   Number of unique control sets:         0
+ Number of LUT Flip Flop pairs used:    730
+   Number with an unused Flip Flop:     462  out of    730    63%  
+   Number with an unused LUT:           151  out of    730    20%  
+   Number of fully used LUT-FF pairs:   117  out of    730    16%  
+   Number of unique control sets:        15
 
 IO Utilization: 
  Number of IOs:                          89
- Number of bonded IOBs:                   0  out of    232     0%  
+ Number of bonded IOBs:                  44  out of    232    18%  
 
 Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                2  out of     16    12%  
 
 ---------------------------
 Partition Resource Summary:
@@ -264,7 +585,18 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
-No clock signals found in this design
+---------------------------------------------------------+------------------------+-------+
+Clock Signal                                             | Clock buffer(FF name)  | Load  |
+---------------------------------------------------------+------------------------+-------+
+clock                                                    | BUFGP                  | 249   |
+exIr[15]_reset_OR_128_o(exIr[15]_reset_OR_128_o1:O)      | NONE(*)(zf)            | 2     |
+exIr[15]_exIr[15]_OR_134_o(exIr[15]_exIr[15]_OR_134_o1:O)| NONE(*)(cf)            | 1     |
+reset                                                    | IBUF+BUFG              | 16    |
+---------------------------------------------------------+------------------------+-------+
+(*) These 2 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
 Asynchronous Control Signals Information:
 ----------------------------------------
@@ -274,9 +606,9 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: No path found
-   Minimum input arrival time before clock: No path found
-   Maximum output required time after clock: No path found
+   Minimum period: 5.177ns (Maximum Frequency: 193.162MHz)
+   Minimum input arrival time before clock: 6.270ns
+   Maximum output required time after clock: 3.890ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -284,22 +616,187 @@ Timing Details:
 All values displayed in nanoseconds (ns)
 
 =========================================================================
+Timing constraint: Default period analysis for Clock 'clock'
+  Clock period: 5.177ns (frequency: 193.162MHz)
+  Total number of paths / destination ports: 5750 / 481
+-------------------------------------------------------------------------
+Delay:               5.177ns (Levels of Logic = 4)
+  Source:            idIr_15 (FF)
+  Destination:       pc_1 (FF)
+  Source Clock:      clock rising
+  Destination Clock: clock rising
+
+  Data Path: idIr_15 to pc_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             7   0.525   1.204  idIr_15 (idIr_15)
+     LUT5:I0->O            1   0.254   0.580  _n1192131_1 (_n1192131)
+     LUT6:I5->O           16   0.254   1.005  _n1192_inv12 (_n1192_inv11)
+     LUT5:I4->O            7   0.254   0.774  _n1192_inv2_rstpot (_n1192_inv2_rstpot)
+     LUT3:I2->O            1   0.254   0.000  pc_1_dpot (pc_1_dpot)
+     FDCE:D                    0.074          pc_1
+    ----------------------------------------
+    Total                      5.177ns (1.615ns logic, 3.562ns route)
+                                       (31.2% logic, 68.8% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'exIr[15]_exIr[15]_OR_134_o'
+  Clock period: 3.402ns (frequency: 293.958MHz)
+  Total number of paths / destination ports: 2 / 1
+-------------------------------------------------------------------------
+Delay:               3.402ns (Levels of Logic = 19)
+  Source:            cf (LATCH)
+  Destination:       cf (LATCH)
+  Source Clock:      exIr[15]_exIr[15]_OR_134_o falling
+  Destination Clock: exIr[15]_exIr[15]_OR_134_o falling
+
+  Data Path: cf to cf
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LDC:G->Q              3   0.581   0.651  cf (cf)
+     LUT2:I1->O            1   0.254   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_lut<0> (Msub_GND_1_o_GND_1_o_sub_153_OUT_lut<0>)
+     MUXCY:S->O            1   0.215   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<0> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<0>)
+     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<1> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<1>)
+     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<2> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<2>)
+     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<3> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<3>)
+     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<4> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<4>)
+     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<5> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<5>)
+     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<6> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<6>)
+     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<7> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<7>)
+     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<8> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<8>)
+     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<9> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<9>)
+     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<10> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<10>)
+     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<11> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<11>)
+     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<12> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<12>)
+     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<13> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<13>)
+     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<14> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<14>)
+     MUXCY:CI->O           0   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<15> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<15>)
+     XORCY:CI->O           1   0.206   0.856  Msub_GND_1_o_GND_1_o_sub_153_OUT_xor<16> (GND_1_o_GND_1_o_sub_153_OUT<16>)
+     LUT6:I2->O            1   0.254   0.000  Mmux_cf_BUS_0002_MUX_225_o27 (cf_BUS_0002_MUX_225_o)
+     LDC:D                     0.036          cf
+    ----------------------------------------
+    Total                      3.402ns (1.895ns logic, 1.507ns route)
+                                       (55.7% logic, 44.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clock'
+  Total number of paths / destination ports: 1201 / 338
+-------------------------------------------------------------------------
+Offset:              6.270ns (Levels of Logic = 5)
+  Source:            iDataIn<13> (PAD)
+  Destination:       pc_1 (FF)
+  Destination Clock: clock rising
+
+  Data Path: iDataIn<13> to pc_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             4   1.228   1.139  iDataIn_13_IBUF (iDataIn_13_IBUF)
+     LUT6:I0->O            1   0.254   1.035  _n1192_inv11 (_n1192_inv1)
+     LUT6:I0->O           16   0.254   1.005  _n1192_inv12 (_n1192_inv11)
+     LUT5:I4->O            7   0.254   0.774  _n1192_inv2_rstpot (_n1192_inv2_rstpot)
+     LUT3:I2->O            1   0.254   0.000  pc_1_dpot (pc_1_dpot)
+     FDCE:D                    0.074          pc_1
+    ----------------------------------------
+    Total                      6.270ns (2.318ns logic, 3.952ns route)
+                                       (37.0% logic, 63.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'exIr[15]_exIr[15]_OR_134_o'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              4.726ns (Levels of Logic = 2)
+  Source:            reset (PAD)
+  Destination:       cf (LATCH)
+  Destination Clock: exIr[15]_exIr[15]_OR_134_o falling
+
+  Data Path: reset to cf
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             6   1.228   0.744  reset_IBUF (reset_IBUF)
+     INV:I->O            186   0.255   2.040  reset_inv751_INV_0 (reset_inv)
+     LDC:CLR                   0.459          cf
+    ----------------------------------------
+    Total                      4.726ns (1.942ns logic, 2.784ns route)
+                                       (41.1% logic, 58.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clock'
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Offset:              3.890ns (Levels of Logic = 1)
+  Source:            pc_7 (FF)
+  Destination:       iAddr<7> (PAD)
+  Source Clock:      clock rising
+
+  Data Path: pc_7 to iAddr<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             3   0.525   0.650  pc_7 (pc_7)
+     OBUF:I->O                 2.715          iAddr_7_OBUF (iAddr<7>)
+    ----------------------------------------
+    Total                      3.890ns (3.240ns logic, 0.650ns route)
+                                       (83.3% logic, 16.7% route)
+
+=========================================================================
 
 Cross Clock Domains Report:
 --------------------------
 
+Clock to Setup on destination clock clock
+--------------------------+---------+---------+---------+---------+
+                          | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock              |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+--------------------------+---------+---------+---------+---------+
+clock                     |    5.177|         |         |         |
+exIr[15]_exIr[15]_OR_134_o|         |    4.959|         |         |
+exIr[15]_reset_OR_128_o   |         |    4.913|         |         |
+reset                     |         |    3.010|         |         |
+--------------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock exIr[15]_exIr[15]_OR_134_o
+--------------------------+---------+---------+---------+---------+
+                          | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock              |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+--------------------------+---------+---------+---------+---------+
+clock                     |         |         |    8.642|         |
+exIr[15]_exIr[15]_OR_134_o|         |         |    3.402|         |
+--------------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock exIr[15]_reset_OR_128_o
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clock          |         |         |    6.512|         |
+reset          |         |         |    5.851|         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock reset
+--------------------------+---------+---------+---------+---------+
+                          | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock              |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+--------------------------+---------+---------+---------+---------+
+clock                     |         |         |   11.909|         |
+exIr[15]_exIr[15]_OR_134_o|         |         |    5.255|         |
+--------------------------+---------+---------+---------+---------+
+
 =========================================================================
 
 
-Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 6.17 secs
+Total REAL time to Xst completion: 20.00 secs
+Total CPU time to Xst completion: 19.57 secs
  
 --> 
 
 
-Total memory usage is 346216 kilobytes
+Total memory usage is 368964 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    9 (   0 filtered)
-Number of infos    :    0 (   0 filtered)
+Number of warnings :   70 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
 
