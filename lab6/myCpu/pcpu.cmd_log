@@ -40,3 +40,30 @@ map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -re
 par -w -intstyle ise -ol high -mt off pcpu_map.ncd pcpu.ncd pcpu.pcf 
 trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml pcpu.twx pcpu.ncd -o pcpu.twr pcpu.pcf -ucf pcpu.ucf 
 xpwr -intstyle ise pcpu.ncd pcpu.pcf -o pcpu.pwr 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/pcpu.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/pcpu.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc pcpu.ucf -p xc6slx16-csg324-3 pcpu.ngc pcpu.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -global_opt off -mt off -ir off -pr off -lc off -power off -o pcpu_map.ncd pcpu.ngd pcpu.pcf 
+par -w -intstyle ise -ol high -mt off pcpu_map.ncd pcpu.ncd pcpu.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml pcpu.twx pcpu.ncd -o pcpu.twr pcpu.pcf -ucf pcpu.ucf 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/pcpu.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/pcpu.syr" 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/pcpu.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/pcpu.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc pcpu.ucf -p xc6slx16-csg324-3 pcpu.ngc pcpu.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -global_opt off -mt off -ir off -pr off -lc off -power off -o pcpu_map.ncd pcpu.ngd pcpu.pcf 
+par -w -intstyle ise -ol high -mt off pcpu_map.ncd pcpu.ncd pcpu.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml pcpu.twx pcpu.ncd -o pcpu.twr pcpu.pcf -ucf pcpu.ucf 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/pcpu.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/pcpu.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc pcpu.ucf -p xc6slx16-csg324-3 pcpu.ngc pcpu.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -global_opt off -mt off -ir off -pr off -lc off -power off -o pcpu_map.ncd pcpu.ngd pcpu.pcf 
+par -w -intstyle ise -ol high -mt off pcpu_map.ncd pcpu.ncd pcpu.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml pcpu.twx pcpu.ncd -o pcpu.twr pcpu.pcf -ucf pcpu.ucf 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/pcpu.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/pcpu.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc pcpu.ucf -p xc6slx16-csg324-3 pcpu.ngc pcpu.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -global_opt off -mt off -ir off -pr off -lc off -power off -o pcpu_map.ncd pcpu.ngd pcpu.pcf 
+par -w -intstyle ise -ol high -mt off pcpu_map.ncd pcpu.ncd pcpu.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml pcpu.twx pcpu.ncd -o pcpu.twr pcpu.pcf -ucf pcpu.ucf 
+xst -intstyle ise -ifn "/home/wu/ise12.3/lab6/myCpu/pcpu.xst" -ofn "/home/wu/ise12.3/lab6/myCpu/pcpu.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc pcpu.ucf -p xc6slx16-csg324-3 pcpu.ngc pcpu.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -global_opt off -mt off -ir off -pr off -lc off -power off -o pcpu_map.ncd pcpu.ngd pcpu.pcf 
+par -w -intstyle ise -ol high -mt off pcpu_map.ncd pcpu.ncd pcpu.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml pcpu.twx pcpu.ncd -o pcpu.twr pcpu.pcf -ucf pcpu.ucf 
+xpwr -intstyle ise pcpu.ncd pcpu.pcf -o pcpu.pwr 

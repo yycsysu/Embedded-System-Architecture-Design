@@ -38,7 +38,7 @@ parameter STORE = 5'b00011; // need data memory
 //010
 parameter ADD   = 5'b01000; //c
 parameter ADDI  = 5'b01001; //c
-//100/101
+//100/101   
 parameter LDIH  = 5'b10000; //c
 parameter ADDC  = 5'b10001; //c
 parameter SUB   = 5'b10010; //c
@@ -181,31 +181,49 @@ reg signed [15:0] regC1;
 
 //Instruction Decoder - Start
   always @ (posedge clock or negedge reset) begin
-    if (!reset)
+    if (!reset) begin
       {exIr, regA, regB, smdr} <= {{16{1'b0}}, {16{1'b0}}, {16{1'b0}}, {16{1'b0}}};
+    end
     else if (state == EXEC) begin
       exIr <= idIr;
+      
       if ((idIr[15:11] == BZ) || (idIr[15:11] == BNZ) || (idIr[15:11] == BN)
         || (idIr[15:11] == BNN) || (idIr[15:11] == BC) || (idIr[15:11] == BNC)
         || (idIr[15:11] == JMPR) || (idIr[15:11] == LDIH) || (idIr[15:11] == ADDI)
         || (idIr[15:11] == SUBI)) begin
-        if (idIr[10:8] == exIr[10:8])
+        if (idIr[10:8] == exIr[10:8] && !(exIr[15:11] == BZ || exIr[15:11] == BNZ || exIr[15:11] == BN
+        || exIr[15:11] == BNN || exIr[15:11] == BC || exIr[15:11] == BNC
+        || exIr[15:11] == JUMP || exIr[15:11] == JMPR || exIr[15:11] == STORE))
           regA <= ALUo;
-        else if (idIr[10:8] == memIr[10:8] && memIr[15:11] == LOAD)
+        else if (idIr[10:8] == memIr[10:8] && memIr[15:11] == LOAD && !(memIr[15:11] == BZ || memIr[15:11] == BNZ || memIr[15:11] == BN
+        || memIr[15:11] == BNN || memIr[15:11] == BC || memIr[15:11] == BNC
+        || memIr[15:11] == JUMP || memIr[15:11] == JMPR || memIr[15:11] == STORE))
           regA <= dDataIn;
-        else if (idIr[10:8] == memIr[10:8])
+        else if (idIr[10:8] == memIr[10:8] && !(memIr[15:11] == BZ || memIr[15:11] == BNZ || memIr[15:11] == BN
+        || memIr[15:11] == BNN || memIr[15:11] == BC || memIr[15:11] == BNC
+        || memIr[15:11] == JUMP || memIr[15:11] == JMPR || memIr[15:11] == STORE))
           regA <= regC;
-        else if (idIr[10:8] == wbIr[10:8])
+        else if (idIr[10:8] == wbIr[10:8] && !(wbIr[15:11] == BZ || wbIr[15:11] == BNZ || wbIr[15:11] == BN
+        || wbIr[15:11] == BNN || wbIr[15:11] == BC || wbIr[15:11] == BNC
+        || wbIr[15:11] == JUMP || wbIr[15:11] == JMPR || wbIr[15:11] == STORE))
             regA <= regC1;
         else regA <= gr[(idIr[10:8])]; //operand1 in 10-8 bits , I type
       end else begin
-        if (idIr[7:4] == exIr[10:8])
+        if (idIr[7:4] == exIr[10:8] && !(exIr[15:11] == BZ || exIr[15:11] == BNZ || exIr[15:11] == BN
+        || exIr[15:11] == BNN || exIr[15:11] == BC || exIr[15:11] == BNC
+        || exIr[15:11] == JUMP || exIr[15:11] == JMPR || exIr[15:11] == STORE))
           regA <= ALUo;
-        else if (idIr[7:4] == memIr[10:8] && memIr[15:11] == LOAD)
+        else if (idIr[7:4] == memIr[10:8] && memIr[15:11] == LOAD && !(memIr[15:11] == BZ || memIr[15:11] == BNZ || memIr[15:11] == BN
+        || memIr[15:11] == BNN || memIr[15:11] == BC || memIr[15:11] == BNC
+        || memIr[15:11] == JUMP || memIr[15:11] == JMPR || memIr[15:11] == STORE))
             regA <= dDataIn;
-        else if (idIr[7:4] == memIr[10:8])
+        else if (idIr[7:4] == memIr[10:8] && !(memIr[15:11] == BZ || memIr[15:11] == BNZ || memIr[15:11] == BN
+        || memIr[15:11] == BNN || memIr[15:11] == BC || memIr[15:11] == BNC
+        || memIr[15:11] == JUMP || memIr[15:11] == JMPR || memIr[15:11] == STORE))
             regA <= regC;
-        else if (idIr[7:4] == wbIr[10:8])
+        else if (idIr[7:4] == wbIr[10:8] && !(wbIr[15:11] == BZ || wbIr[15:11] == BNZ || wbIr[15:11] == BN
+        || wbIr[15:11] == BNN || wbIr[15:11] == BC || wbIr[15:11] == BNC
+        || wbIr[15:11] == JUMP || wbIr[15:11] == JMPR || wbIr[15:11] == STORE))
             regA <= regC1;
         else regA <= gr[idIr[6:4]]; //operand2 in 6-4 bits , RI/R type
       end
@@ -224,13 +242,21 @@ reg signed [15:0] regC1;
       end else if (idIr[15:11] == LDIH) begin // Itype
         regB <= {idIr[7:0], 8'b0000_0000};
       end else begin
-        if (idIr[3:0] == exIr[10:8])
+        if (idIr[3:0] == exIr[10:8] && !(exIr[15:11] == BZ || exIr[15:11] == BNZ || exIr[15:11] == BN
+        || exIr[15:11] == BNN || exIr[15:11] == BC || exIr[15:11] == BNC
+        || exIr[15:11] == JUMP || exIr[15:11] == JMPR || exIr[15:11] == STORE))
             regB <= ALUo;
-        else if (idIr[3:0] == memIr[10:8] && (memIr[15:11] == LOAD))
+        else if (idIr[3:0] == memIr[10:8] && (memIr[15:11] == LOAD) && !(memIr[15:11] == BZ || memIr[15:11] == BNZ || memIr[15:11] == BN
+        || memIr[15:11] == BNN || memIr[15:11] == BC || memIr[15:11] == BNC
+        || memIr[15:11] == JUMP || memIr[15:11] == JMPR || memIr[15:11] == STORE))
             regB <= dDataIn;
-        else if (idIr[3:0] == memIr[10:8])
+        else if (idIr[3:0] == memIr[10:8] && !(memIr[15:11] == BZ || memIr[15:11] == BNZ || memIr[15:11] == BN
+        || memIr[15:11] == BNN || memIr[15:11] == BC || memIr[15:11] == BNC
+        || memIr[15:11] == JUMP || memIr[15:11] == JMPR || memIr[15:11] == STORE))
             regB <= regC;
-        else if (idIr[3:0] == wbIr[10:8])
+        else if (idIr[3:0] == wbIr[10:8] && !(wbIr[15:11] == BZ || wbIr[15:11] == BNZ || wbIr[15:11] == BN
+        || wbIr[15:11] == BNN || wbIr[15:11] == BC || wbIr[15:11] == BNC
+        || wbIr[15:11] == JUMP || wbIr[15:11] == JMPR || wbIr[15:11] == STORE))
             regB <= regC1;
         else regB <= gr[idIr[2:0]]; //operand3: r3 , R type
       end
@@ -242,7 +268,8 @@ reg signed [15:0] regC1;
     //ALU Start
   always @ (*) begin
     if (!reset) begin
-      {cf, zf, nf} <= {1'b0, 1'b0, 1'b0};
+      ALUo <= 16'b0;
+      {exCf, exZf, exNf} <= {1'b0, 1'b0, 1'b0};
     end else if ((exIr[15:11] == ADD)
       || (exIr[15:11] == ADDI)
       || (exIr[15:11] == JMPR)
@@ -253,47 +280,42 @@ reg signed [15:0] regC1;
       || (exIr[15:11] == BNN)
       || (exIr[15:11] == BC)
       || (exIr[15:11] == BNC)) begin
-        {cf, ALUo} <= regA + regB + 1'b0;
+        {exCf, ALUo} <= regA + regB + 1'b0;
       end else if (exIr[15:11] == ADDC) begin
-        {cf, ALUo} <= regA + regB + cf;
+        {exCf, ALUo} <= regA + regB + cf;
       end else if (exIr[15:11] == SUBC) begin
-        {cf, ALUo} <= regA - regB - cf;
+        {exCf, ALUo} <= regA - regB - cf;
       end else if ((exIr[15:11] == CMP)
                || (exIr[15:11] == SUB)
                || (exIr[15:11] == SUBI)) begin
-        {cf, ALUo} <= regA - regB - 1'b0;
+        {exCf, ALUo} <= regA - regB - 1'b0;
       end else if (exIr[15:11] == AND) begin
-        ALUo <= regA & regB;
+        {exCf, ALUo} <= regA & regB;
       end else if (exIr[15:11] == OR) begin
-        ALUo <= regA | regB;
+        {exCf, ALUo} <= regA | regB;
       end else if (exIr[15:11] == XOR) begin
-        ALUo <= regA ^ regB;
+        {exCf, ALUo} <= regA ^ regB;
       end else if (exIr[15:11] == SLL) begin
-        {cf, ALUo} <= regA << regB;
+        {exCf, ALUo} <= regA << regB;
       end else if (exIr[15:11] == SRL) begin
-        ALUo <= regA >> regB;
+        {exCf, ALUo} <= regA >> regB;
       end else if (exIr[15:11] == SLA) begin
-        {cf, ALUo} <= regA <<< regB;
+        {exCf, ALUo} <= regA <<< regB;
       end else if (exIr[15:11] == SRA) begin
-        ALUo <= regA >>> regB;
+        {exCf, ALUo} <= regA >>> regB;
       end else begin
-        ALUo <= regB;
+        {exCf, ALUo} <= regB;
       end
       
-      if ((exIr[15:11] == ADD)
-      || (exIr[15:11] == ADDC)
-      || (exIr[15:11] == ADDI)
-      || (exIr[15:11] == LDIH)
-      || (exIr[15:11] == CMP)) begin
-        if (ALUo == {16{1'b0}})
-          zf <= 1'b1;
-        else
-          zf <= 1'b0;
-        if (ALUo[15] == 1'b1)
-          nf <= 1'b1;
-        else
-          nf <= 1'b0;
-      end
+      if (ALUo == {16{1'b0}})
+        exZf <= 1'b1;
+      else
+        exZf <= 1'b0;
+      if (ALUo[15] == 1'b1)
+        exNf <= 1'b1;
+      else
+        exNf <= 1'b0;
+        
       if (exIr[15:11] == STORE)
         {dw, smdr1} <= {1'b1, smdr};
       else
@@ -309,7 +331,7 @@ reg signed [15:0] regC1;
     end else if (state == EXEC) begin
       memIr <= exIr;
       regC <= ALUo;
-      //{cf, nf, zf} <= {exCf, exNf, exZf};
+      {cf, nf, zf} <= {exCf, exNf, exZf};
        
     end
   end

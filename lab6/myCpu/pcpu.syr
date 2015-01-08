@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> 
 Reading design: pcpu.prj
@@ -117,8 +117,8 @@ Parsing module <pcpu>.
 =========================================================================
 
 Elaborating module <pcpu>.
-WARNING:HDLCompiler:1127 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 243: Assignment to smdr1 ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 305: Assignment to smdr1 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 269: Assignment to smdr1 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/wu/ise12.3/lab6/myCpu/pcpu.v" Line 327: Assignment to smdr1 ignored, since the identifier is never used
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -233,6 +233,9 @@ WARNING:Xst:647 - Input <ySelect<3:0>> is never used. This port will be preserve
     Found 1-bit register for signal <gr<0><2>>.
     Found 1-bit register for signal <gr<0><1>>.
     Found 1-bit register for signal <gr<0><0>>.
+    Found 1-bit register for signal <zf>.
+    Found 1-bit register for signal <nf>.
+    Found 1-bit register for signal <cf>.
     Found 1-bit register for signal <state>.
     Found 1-bit register for signal <gr<7><15>>.
     Found 1-bit register for signal <gr<7><14>>.
@@ -298,61 +301,41 @@ WARNING:Xst:647 - Input <ySelect<3:0>> is never used. This port will be preserve
     Found 1-bit register for signal <gr<4><2>>.
     Found 1-bit register for signal <gr<4><1>>.
     Found 1-bit register for signal <gr<4><0>>.
-    Found 17-bit subtractor for signal <GND_1_o_GND_1_o_sub_153_OUT> created at line 260.
-    Found 17-bit subtractor for signal <GND_1_o_GND_1_o_sub_158_OUT> created at line 264.
+    Found 17-bit subtractor for signal <GND_1_o_GND_1_o_sub_261_OUT> created at line 287.
+    Found 17-bit subtractor for signal <GND_1_o_GND_1_o_sub_266_OUT> created at line 291.
     Found 8-bit adder for signal <pc[7]_GND_1_o_add_50_OUT> created at line 176.
-    Found 17-bit adder for signal <n0674> created at line 258.
-    Found 17-bit adder for signal <BUS_0003_GND_1_o_add_149_OUT> created at line 258.
-    Found 16-bit shifter logical right for signal <regA[15]_regB[15]_shift_right_167_OUT> created at line 274
-    Found 17-bit shifter logical left for signal <regA[15]_regB[15]_shift_left_169_OUT> created at line 276
-    Found 16-bit shifter arithmetic right for signal <regA[15]_regB[15]_shift_right_171_OUT> created at line 278
-    Found 16-bit 8-to-1 multiplexer for signal <idIr[10]_gr[7][15]_wide_mux_78_OUT> created at line 200.
-    Found 16-bit 8-to-1 multiplexer for signal <idIr[6]_gr[7][15]_wide_mux_88_OUT> created at line 210.
-    Found 16-bit 8-to-1 multiplexer for signal <idIr[2]_gr[7][15]_wide_mux_117_OUT> created at line 235.
-WARNING:Xst:737 - Found 1-bit latch for signal <nf>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <zf>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <cf>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<15>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<14>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<13>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<12>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<11>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<10>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<9>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<8>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<7>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<6>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<5>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<4>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<3>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <ALUo<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 17-bit adder for signal <n0708> created at line 285.
+    Found 17-bit adder for signal <BUS_0003_GND_1_o_add_257_OUT> created at line 285.
+    Found 17-bit shifter logical right for signal <regA[15]_regB[15]_shift_right_275_OUT> created at line 301
+    Found 17-bit shifter logical left for signal <regA[15]_regB[15]_shift_left_277_OUT> created at line 303
+    Found 17-bit shifter arithmetic right for signal <regA[15]_regB[15]_shift_right_279_OUT> created at line 305
+    Found 16-bit 8-to-1 multiplexer for signal <idIr[10]_gr[7][15]_wide_mux_114_OUT> created at line 210.
+    Found 16-bit 8-to-1 multiplexer for signal <idIr[6]_gr[7][15]_wide_mux_160_OUT> created at line 228.
+    Found 16-bit 8-to-1 multiplexer for signal <idIr[2]_gr[7][15]_wide_mux_225_OUT> created at line 261.
     Found 3-bit comparator equal for signal <iDataIn[2]_idIr[10]_equal_16_o> created at line 135
     Found 3-bit comparator equal for signal <iDataIn[6]_idIr[10]_equal_17_o> created at line 136
     Found 4-bit comparator equal for signal <iDataIn[7]_GND_1_o_equal_24_o> created at line 144
     Found 3-bit comparator equal for signal <iDataIn[10]_idIr[10]_equal_36_o> created at line 157
-    Found 3-bit comparator equal for signal <idIr[10]_exIr[10]_equal_74_o> created at line 192
-    Found 3-bit comparator equal for signal <idIr[10]_memIr[10]_equal_77_o> created at line 196
-    Found 3-bit comparator equal for signal <idIr[10]_wbIr[10]_equal_78_o> created at line 198
-    Found 4-bit comparator equal for signal <idIr[7]_GND_1_o_equal_84_o> created at line 202
-    Found 4-bit comparator equal for signal <idIr[7]_GND_1_o_equal_87_o> created at line 206
-    Found 4-bit comparator equal for signal <idIr[7]_GND_1_o_equal_88_o> created at line 208
-    Found 4-bit comparator equal for signal <idIr[3]_GND_1_o_equal_113_o> created at line 227
-    Found 4-bit comparator equal for signal <idIr[3]_GND_1_o_equal_116_o> created at line 231
-    Found 4-bit comparator equal for signal <idIr[3]_GND_1_o_equal_117_o> created at line 233
+    Found 3-bit comparator equal for signal <idIr[10]_exIr[10]_equal_74_o> created at line 194
+    Found 3-bit comparator equal for signal <idIr[10]_memIr[10]_equal_95_o> created at line 202
+    Found 3-bit comparator equal for signal <idIr[10]_wbIr[10]_equal_105_o> created at line 206
+    Found 4-bit comparator equal for signal <idIr[7]_GND_1_o_equal_120_o> created at line 212
+    Found 4-bit comparator equal for signal <idIr[7]_GND_1_o_equal_141_o> created at line 220
+    Found 4-bit comparator equal for signal <idIr[7]_GND_1_o_equal_151_o> created at line 224
+    Found 4-bit comparator equal for signal <idIr[3]_GND_1_o_equal_185_o> created at line 245
+    Found 4-bit comparator equal for signal <idIr[3]_GND_1_o_equal_206_o> created at line 253
+    Found 4-bit comparator equal for signal <idIr[3]_GND_1_o_equal_216_o> created at line 257
     Summary:
 	inferred   5 Adder/Subtractor(s).
-	inferred 265 D-type flip-flop(s).
-	inferred  19 Latch(s).
+	inferred 268 D-type flip-flop(s).
 	inferred  13 Comparator(s).
-	inferred 139 Multiplexer(s).
+	inferred  56 Multiplexer(s).
 	inferred   3 Combinational logic shifter(s).
 Unit <pcpu> synthesized.
-RTL-Simplification CPUSTAT: 1.03 
-RTL-BasicInf CPUSTAT: 1.08 
+RTL-Simplification CPUSTAT: 0.66 
+RTL-BasicInf CPUSTAT: 0.97 
 RTL-BasicOpt CPUSTAT: 0.00 
-RTL-Remain-Bus CPUSTAT: 0.01 
+RTL-Remain-Bus CPUSTAT: 0.02 
 
 =========================================================================
 HDL Synthesis Report
@@ -362,27 +345,25 @@ Macro Statistics
  17-bit adder                                          : 2
  17-bit subtractor                                     : 2
  8-bit adder                                           : 1
-# Registers                                            : 78
- 1-bit register                                        : 65
+# Registers                                            : 81
+ 1-bit register                                        : 68
  16-bit register                                       : 12
  8-bit register                                        : 1
-# Latches                                              : 19
- 1-bit latch                                           : 19
 # Comparators                                          : 13
  3-bit comparator equal                                : 6
  4-bit comparator equal                                : 7
-# Multiplexers                                         : 139
- 1-bit 2-to-1 multiplexer                              : 103
- 16-bit 2-to-1 multiplexer                             : 31
+# Multiplexers                                         : 56
+ 1-bit 2-to-1 multiplexer                              : 14
+ 16-bit 2-to-1 multiplexer                             : 35
  16-bit 8-to-1 multiplexer                             : 3
- 17-bit 2-to-1 multiplexer                             : 1
+ 17-bit 2-to-1 multiplexer                             : 3
  8-bit 2-to-1 multiplexer                              : 1
 # Logic shifters                                       : 3
- 16-bit shifter arithmetic right                       : 1
- 16-bit shifter logical right                          : 1
+ 17-bit shifter arithmetic right                       : 1
  17-bit shifter logical left                           : 1
+ 17-bit shifter logical right                          : 1
 # Xors                                                 : 1
- 16-bit xor2                                           : 1
+ 17-bit xor2                                           : 1
 
 =========================================================================
 
@@ -452,22 +433,22 @@ Macro Statistics
  17-bit subtractor                                     : 2
 # Counters                                             : 1
  8-bit up counter                                      : 1
-# Registers                                            : 233
- Flip-Flops                                            : 233
+# Registers                                            : 236
+ Flip-Flops                                            : 236
 # Comparators                                          : 13
  3-bit comparator equal                                : 6
  4-bit comparator equal                                : 7
-# Multiplexers                                         : 137
- 1-bit 2-to-1 multiplexer                              : 102
- 16-bit 2-to-1 multiplexer                             : 31
+# Multiplexers                                         : 54
+ 1-bit 2-to-1 multiplexer                              : 13
+ 16-bit 2-to-1 multiplexer                             : 35
  16-bit 8-to-1 multiplexer                             : 3
- 17-bit 2-to-1 multiplexer                             : 1
+ 17-bit 2-to-1 multiplexer                             : 3
 # Logic shifters                                       : 3
- 16-bit shifter arithmetic right                       : 1
- 16-bit shifter logical right                          : 1
+ 17-bit shifter arithmetic right                       : 1
  17-bit shifter logical left                           : 1
+ 17-bit shifter logical right                          : 1
 # Xors                                                 : 1
- 16-bit xor2                                           : 1
+ 17-bit xor2                                           : 1
 
 =========================================================================
 
@@ -479,12 +460,15 @@ Optimizing unit <pcpu> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block pcpu, actual ratio is 7.
-FlipFlop idIr_0 has been replicated 2 time(s)
-FlipFlop idIr_10 has been replicated 2 time(s)
-FlipFlop idIr_4 has been replicated 1 time(s)
-FlipFlop idIr_8 has been replicated 2 time(s)
-FlipFlop idIr_9 has been replicated 1 time(s)
+Found area constraint ratio of 100 (+ 5) on block pcpu, actual ratio is 8.
+FlipFlop exIr_11 has been replicated 1 time(s)
+FlipFlop exIr_12 has been replicated 1 time(s)
+FlipFlop exIr_13 has been replicated 1 time(s)
+FlipFlop regA_15 has been replicated 1 time(s)
+FlipFlop regB_0 has been replicated 2 time(s)
+FlipFlop regB_1 has been replicated 1 time(s)
+FlipFlop regB_2 has been replicated 1 time(s)
+FlipFlop regB_3 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -492,8 +476,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 249
- Flip-Flops                                            : 249
+# Registers                                            : 253
+ Flip-Flops                                            : 253
 
 =========================================================================
 
@@ -516,27 +500,25 @@ Top Level Output File Name         : pcpu.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 772
+# BELS                             : 834
 #      GND                         : 1
-#      INV                         : 17
-#      LUT1                        : 16
+#      INV                         : 18
+#      LUT1                        : 23
 #      LUT2                        : 55
-#      LUT3                        : 42
-#      LUT4                        : 32
-#      LUT5                        : 95
-#      LUT6                        : 322
+#      LUT3                        : 37
+#      LUT4                        : 39
+#      LUT5                        : 105
+#      LUT6                        : 344
 #      MUXCY                       : 71
-#      MUXF7                       : 45
+#      MUXF7                       : 65
 #      VCC                         : 1
 #      XORCY                       : 75
-# FlipFlops/Latches                : 268
-#      FDCE                        : 184
-#      FDE                         : 64
+# FlipFlops/Latches                : 253
+#      FDCE                        : 185
+#      FDE                         : 66
 #      FDR                         : 1
-#      LD                          : 18
-#      LDC                         : 1
-# Clock Buffers                    : 2
-#      BUFG                        : 1
+#      FDRE                        : 1
+# Clock Buffers                    : 1
 #      BUFGP                       : 1
 # IO Buffers                       : 43
 #      IBUF                        : 35
@@ -549,23 +531,23 @@ Selected Device : 6slx16csg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             268  out of  18224     1%  
- Number of Slice LUTs:                  579  out of   9112     6%  
-    Number used as Logic:               579  out of   9112     6%  
+ Number of Slice Registers:             253  out of  18224     1%  
+ Number of Slice LUTs:                  621  out of   9112     6%  
+    Number used as Logic:               621  out of   9112     6%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    730
-   Number with an unused Flip Flop:     462  out of    730    63%  
-   Number with an unused LUT:           151  out of    730    20%  
-   Number of fully used LUT-FF pairs:   117  out of    730    16%  
-   Number of unique control sets:        15
+ Number of LUT Flip Flop pairs used:    781
+   Number with an unused Flip Flop:     528  out of    781    67%  
+   Number with an unused LUT:           160  out of    781    20%  
+   Number of fully used LUT-FF pairs:    93  out of    781    11%  
+   Number of unique control sets:        13
 
 IO Utilization: 
  Number of IOs:                          89
  Number of bonded IOBs:                  44  out of    232    18%  
 
 Specific Feature Utilization:
- Number of BUFG/BUFGCTRLs:                2  out of     16    12%  
+ Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
 
 ---------------------------
 Partition Resource Summary:
@@ -585,18 +567,11 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
----------------------------------------------------------+------------------------+-------+
-Clock Signal                                             | Clock buffer(FF name)  | Load  |
----------------------------------------------------------+------------------------+-------+
-clock                                                    | BUFGP                  | 249   |
-exIr[15]_reset_OR_128_o(exIr[15]_reset_OR_128_o1:O)      | NONE(*)(zf)            | 2     |
-exIr[15]_exIr[15]_OR_134_o(exIr[15]_exIr[15]_OR_134_o1:O)| NONE(*)(cf)            | 1     |
-reset                                                    | IBUF+BUFG              | 16    |
----------------------------------------------------------+------------------------+-------+
-(*) These 2 clock signal(s) are generated by combinatorial logic,
-and XST is not able to identify which are the primary clock signals.
-Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
-INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clock                              | BUFGP                  | 253   |
+-----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
 ----------------------------------------
@@ -606,9 +581,9 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 5.177ns (Maximum Frequency: 193.162MHz)
-   Minimum input arrival time before clock: 6.270ns
-   Maximum output required time after clock: 3.890ns
+   Minimum period: 8.095ns (Maximum Frequency: 123.537MHz)
+   Minimum input arrival time before clock: 6.711ns
+   Maximum output required time after clock: 3.856ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -617,117 +592,60 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock'
-  Clock period: 5.177ns (frequency: 193.162MHz)
-  Total number of paths / destination ports: 5750 / 481
+  Clock period: 8.095ns (frequency: 123.537MHz)
+  Total number of paths / destination ports: 44830 / 505
 -------------------------------------------------------------------------
-Delay:               5.177ns (Levels of Logic = 4)
-  Source:            idIr_15 (FF)
-  Destination:       pc_1 (FF)
+Delay:               8.095ns (Levels of Logic = 7)
+  Source:            regB_12 (FF)
+  Destination:       zf (FF)
   Source Clock:      clock rising
   Destination Clock: clock rising
 
-  Data Path: idIr_15 to pc_1
+  Data Path: regB_12 to zf
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q             7   0.525   1.204  idIr_15 (idIr_15)
-     LUT5:I0->O            1   0.254   0.580  _n1192131_1 (_n1192131)
-     LUT6:I5->O           16   0.254   1.005  _n1192_inv12 (_n1192_inv11)
-     LUT5:I4->O            7   0.254   0.774  _n1192_inv2_rstpot (_n1192_inv2_rstpot)
-     LUT3:I2->O            1   0.254   0.000  pc_1_dpot (pc_1_dpot)
-     FDCE:D                    0.074          pc_1
+     FDCE:C->Q             4   0.525   1.139  regB_12 (regB_12)
+     LUT6:I0->O            2   0.254   0.617  out_SW0 (N507)
+     LUT6:I5->O           16   0.254   1.005  out (_n2222)
+     LUT6:I5->O            1   0.254   0.580  Mmux_ALUo557 (Mmux_ALUo557)
+     LUT6:I5->O            1   0.254   0.580  Mmux_ALUo559 (Mmux_ALUo559)
+     LUT6:I5->O            4   0.254   1.114  Mmux_ALUo5511 (ALUo<4>)
+     LUT6:I1->O            1   0.254   0.688  exZf1_SW0_SW0 (N569)
+     LUT6:I4->O            1   0.250   0.000  exZf3 (exZf)
+     FDE:D                     0.074          zf
     ----------------------------------------
-    Total                      5.177ns (1.615ns logic, 3.562ns route)
-                                       (31.2% logic, 68.8% route)
-
-=========================================================================
-Timing constraint: Default period analysis for Clock 'exIr[15]_exIr[15]_OR_134_o'
-  Clock period: 3.402ns (frequency: 293.958MHz)
-  Total number of paths / destination ports: 2 / 1
--------------------------------------------------------------------------
-Delay:               3.402ns (Levels of Logic = 19)
-  Source:            cf (LATCH)
-  Destination:       cf (LATCH)
-  Source Clock:      exIr[15]_exIr[15]_OR_134_o falling
-  Destination Clock: exIr[15]_exIr[15]_OR_134_o falling
-
-  Data Path: cf to cf
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     LDC:G->Q              3   0.581   0.651  cf (cf)
-     LUT2:I1->O            1   0.254   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_lut<0> (Msub_GND_1_o_GND_1_o_sub_153_OUT_lut<0>)
-     MUXCY:S->O            1   0.215   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<0> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<0>)
-     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<1> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<1>)
-     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<2> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<2>)
-     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<3> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<3>)
-     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<4> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<4>)
-     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<5> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<5>)
-     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<6> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<6>)
-     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<7> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<7>)
-     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<8> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<8>)
-     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<9> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<9>)
-     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<10> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<10>)
-     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<11> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<11>)
-     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<12> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<12>)
-     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<13> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<13>)
-     MUXCY:CI->O           1   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<14> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<14>)
-     MUXCY:CI->O           0   0.023   0.000  Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<15> (Msub_GND_1_o_GND_1_o_sub_153_OUT_cy<15>)
-     XORCY:CI->O           1   0.206   0.856  Msub_GND_1_o_GND_1_o_sub_153_OUT_xor<16> (GND_1_o_GND_1_o_sub_153_OUT<16>)
-     LUT6:I2->O            1   0.254   0.000  Mmux_cf_BUS_0002_MUX_225_o27 (cf_BUS_0002_MUX_225_o)
-     LDC:D                     0.036          cf
-    ----------------------------------------
-    Total                      3.402ns (1.895ns logic, 1.507ns route)
-                                       (55.7% logic, 44.3% route)
+    Total                      8.095ns (2.373ns logic, 5.722ns route)
+                                       (29.3% logic, 70.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clock'
-  Total number of paths / destination ports: 1201 / 338
+  Total number of paths / destination ports: 1070 / 350
 -------------------------------------------------------------------------
-Offset:              6.270ns (Levels of Logic = 5)
-  Source:            iDataIn<13> (PAD)
-  Destination:       pc_1 (FF)
+Offset:              6.711ns (Levels of Logic = 5)
+  Source:            iDataIn<1> (PAD)
+  Destination:       pc_0 (FF)
   Destination Clock: clock rising
 
-  Data Path: iDataIn<13> to pc_1
+  Data Path: iDataIn<1> to pc_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             4   1.228   1.139  iDataIn_13_IBUF (iDataIn_13_IBUF)
-     LUT6:I0->O            1   0.254   1.035  _n1192_inv11 (_n1192_inv1)
-     LUT6:I0->O           16   0.254   1.005  _n1192_inv12 (_n1192_inv11)
-     LUT5:I4->O            7   0.254   0.774  _n1192_inv2_rstpot (_n1192_inv2_rstpot)
-     LUT3:I2->O            1   0.254   0.000  pc_1_dpot (pc_1_dpot)
-     FDCE:D                    0.074          pc_1
+     IBUF:I->O             2   1.228   1.072  iDataIn_1_IBUF (iDataIn_1_IBUF)
+     LUT6:I0->O            1   0.254   0.688  idIr[15]_iDataIn[2]_AND_3_o1 (idIr[15]_iDataIn[2]_AND_3_o1)
+     LUT6:I4->O            1   0.250   0.580  idIr[15]_iDataIn[2]_AND_3_o3_SW0 (N583)
+     LUT6:I5->O           17   0.254   1.028  idIr[15]_iDataIn[2]_AND_3_o3 (idIr[15]_iDataIn[2]_AND_3_o)
+     LUT6:I5->O            8   0.254   0.802  _n1138_inv2 (_n1138_inv)
+     FDCE:CE                   0.302          pc_0
     ----------------------------------------
-    Total                      6.270ns (2.318ns logic, 3.952ns route)
-                                       (37.0% logic, 63.0% route)
-
-=========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'exIr[15]_exIr[15]_OR_134_o'
-  Total number of paths / destination ports: 1 / 1
--------------------------------------------------------------------------
-Offset:              4.726ns (Levels of Logic = 2)
-  Source:            reset (PAD)
-  Destination:       cf (LATCH)
-  Destination Clock: exIr[15]_exIr[15]_OR_134_o falling
-
-  Data Path: reset to cf
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     IBUF:I->O             6   1.228   0.744  reset_IBUF (reset_IBUF)
-     INV:I->O            186   0.255   2.040  reset_inv751_INV_0 (reset_inv)
-     LDC:CLR                   0.459          cf
-    ----------------------------------------
-    Total                      4.726ns (1.942ns logic, 2.784ns route)
-                                       (41.1% logic, 58.9% route)
+    Total                      6.711ns (2.542ns logic, 4.169ns route)
+                                       (37.9% logic, 62.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clock'
   Total number of paths / destination ports: 8 / 8
 -------------------------------------------------------------------------
-Offset:              3.890ns (Levels of Logic = 1)
+Offset:              3.856ns (Levels of Logic = 1)
   Source:            pc_7 (FF)
   Destination:       iAddr<7> (PAD)
   Source Clock:      clock rising
@@ -736,11 +654,11 @@ Offset:              3.890ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q             3   0.525   0.650  pc_7 (pc_7)
+     FDCE:C->Q             2   0.525   0.616  pc_7 (pc_7)
      OBUF:I->O                 2.715          iAddr_7_OBUF (iAddr<7>)
     ----------------------------------------
-    Total                      3.890ns (3.240ns logic, 0.650ns route)
-                                       (83.3% logic, 16.7% route)
+    Total                      3.856ns (3.240ns logic, 0.616ns route)
+                                       (84.0% logic, 16.0% route)
 
 =========================================================================
 
@@ -748,55 +666,25 @@ Cross Clock Domains Report:
 --------------------------
 
 Clock to Setup on destination clock clock
---------------------------+---------+---------+---------+---------+
-                          | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
-Source Clock              |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
---------------------------+---------+---------+---------+---------+
-clock                     |    5.177|         |         |         |
-exIr[15]_exIr[15]_OR_134_o|         |    4.959|         |         |
-exIr[15]_reset_OR_128_o   |         |    4.913|         |         |
-reset                     |         |    3.010|         |         |
---------------------------+---------+---------+---------+---------+
-
-Clock to Setup on destination clock exIr[15]_exIr[15]_OR_134_o
---------------------------+---------+---------+---------+---------+
-                          | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
-Source Clock              |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
---------------------------+---------+---------+---------+---------+
-clock                     |         |         |    8.642|         |
-exIr[15]_exIr[15]_OR_134_o|         |         |    3.402|         |
---------------------------+---------+---------+---------+---------+
-
-Clock to Setup on destination clock exIr[15]_reset_OR_128_o
 ---------------+---------+---------+---------+---------+
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clock          |         |         |    6.512|         |
-reset          |         |         |    5.851|         |
+clock          |    8.095|         |         |         |
 ---------------+---------+---------+---------+---------+
-
-Clock to Setup on destination clock reset
---------------------------+---------+---------+---------+---------+
-                          | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
-Source Clock              |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
---------------------------+---------+---------+---------+---------+
-clock                     |         |         |   11.909|         |
-exIr[15]_exIr[15]_OR_134_o|         |         |    5.255|         |
---------------------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
 Total REAL time to Xst completion: 20.00 secs
-Total CPU time to Xst completion: 19.57 secs
+Total CPU time to Xst completion: 20.21 secs
  
 --> 
 
 
-Total memory usage is 368964 kilobytes
+Total memory usage is 366396 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   70 (   0 filtered)
-Number of infos    :    1 (   0 filtered)
+Number of warnings :   51 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
 

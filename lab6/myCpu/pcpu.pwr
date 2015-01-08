@@ -79,12 +79,12 @@
 -----------------------------------------------------------------------------
 |        On-Chip        | Power (mW) |  Used  | Available | Utilization (%) |
 -----------------------------------------------------------------------------
-| Clocks                |       0.05 |      4 |    ---    |       ---       |
-| Logic                 |       0.00 |    563 |      9112 |               6 |
-| Signals               |       0.00 |    783 |    ---    |       ---       |
+| Clocks                |       0.03 |      1 |    ---    |       ---       |
+| Logic                 |       0.00 |    607 |      9112 |               7 |
+| Signals               |       0.00 |    799 |    ---    |       ---       |
 | IOs                   |       0.00 |     44 |       232 |              19 |
 | Quiescent             |      14.84 |        |           |                 |
-| Total                 |      14.89 |        |           |                 |
+| Total                 |      14.87 |        |           |                 |
 -----------------------------------------------------------------------------
 
 2.2.
@@ -102,7 +102,7 @@
 ------------------------------------------------------
 |                      | Total | Dynamic | Quiescent |
 ------------------------------------------------------
-| Supply Power (mW)    | 14.89 | 0.05    | 14.84     |
+| Supply Power (mW)    | 14.87 | 0.03    | 14.84     |
 ------------------------------------------------------
 
 ---------------------------------------------------------------------------------------------------------------
@@ -110,7 +110,7 @@
 ---------------------------------------------------------------------------------------------------------------
 |     Supply Source     | Supply Voltage | Total Current (mA) | Dynamic Current (mA) | Quiescent Current (mA) |
 ---------------------------------------------------------------------------------------------------------------
-| Vccint                |          1.200 |               6.12 |                 0.04 |                   6.08 |
+| Vccint                |          1.200 |               6.11 |                 0.03 |                   6.08 |
 | Vccaux                |          2.500 |               3.02 |                 0.00 |                   3.02 |
 | Vcco25                |          2.500 |               0.00 |                 0.00 |                   0.00 |
 ---------------------------------------------------------------------------------------------------------------
@@ -145,10 +145,6 @@
 WARNING:PowerEstimator:270 - Power estimate is considered inaccurate. To see details, generate an advanced report with the "-v" switch.
 WARNING:Power:1337 - Clock frequency for clock net "clock_BUFGP" is zero.
 WARNING:Power:1337 - Clock frequency for clock net "clock_BUFGP/IBUFG" is zero.
-WARNING:Power:1337 - Clock frequency for clock net "exIr[15]_exIr[15]_OR_134_o" is zero.
-WARNING:Power:1337 - Clock frequency for clock net "exIr[15]_reset_OR_128_o" is zero.
-WARNING:Power:1337 - Clock frequency for clock net "reset_IBUF" is zero.
-WARNING:Power:1337 - Clock frequency for clock net "reset_IBUF_BUFG" is zero.
 WARNING:Power:1369 - Clock frequency for one or more clocks was not found through
 timing constraints (PCF file) or simulation data.  Without knowing the
 clock frequency of all clocks, dynamic power information for those clock
@@ -162,5 +158,5 @@ design.  To avoid this warning, provide at least one of the following:
      XPower Analyzer GUI and then applying "Update Power Analysis"
 --------------------------------------------------------------------------------
 
-Analysis completed: Wed Jan  7 21:44:54 2015
+Analysis completed: Thu Jan  8 13:11:25 2015
 ----------------------------------------------------------------
